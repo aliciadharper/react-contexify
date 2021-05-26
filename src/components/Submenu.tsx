@@ -78,6 +78,7 @@ export const Submenu: React.FC<SubMenuProps> = ({
 
     useEffect(() => {
         if (nodeRef.current) {
+            console.log("TEST")
             const {innerWidth, innerHeight} = window;
             const rect = nodeRef.current.getBoundingClientRect();
             const style: SubMenuState = {};
