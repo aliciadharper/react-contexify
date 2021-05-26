@@ -27,7 +27,7 @@
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16"
-  }
+  },
   "prettier": {
     "printWidth": 80,
     "semi": true,
