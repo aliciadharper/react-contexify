@@ -20,11 +20,8 @@ export interface SubMenuProps
      */
     children: ReactNode;
 
-    /**
-     * Any valid node that can be rendered
-     */
-    direction: ReactNode;
-
+    horizontalDisplay: ReactNode;
+    verticalDisplay: ReactNode;
     /**
      * Render a custom arrow
      */
@@ -51,7 +48,8 @@ interface SubMenuState {
 export const Submenu: React.FC<SubMenuProps> = ({
                                                     arrow = '▶',
                                                     children,
-                                                    direction = "default",
+                                                    horizontalDisplay = "default",
+                                                    verticalDisplay = "default",
                                                     disabled = false,
                                                     hidden = false,
                                                     label,
@@ -78,11 +76,10 @@ export const Submenu: React.FC<SubMenuProps> = ({
 
     useEffect(() => {
         if (nodeRef.current) {
-            console.log("TEST")
             const {innerWidth, innerHeight} = window;
             const rect = nodeRef.current.getBoundingClientRect();
             const style: SubMenuState = {};
-            switch (direction) {
+            switch (horizontalDisplay) {
                 case "default":
                     if
                     (rect.right < innerWidth) {
@@ -93,21 +90,33 @@ export const Submenu: React.FC<SubMenuProps> = ({
                         style.left = undefined;
                     }
                     break;
-                case "left":
+                case "right":
                     style.left = '100%';
                     style.right = undefined;
                     break;
-                case "right":
+                case "left":
                     style.right = '100%';
                     style.left = undefined;
                     break;
             }
-            if (rect.bottom > innerHeight) {
-                style.bottom = 0;
-                style.top = 'initial';
-            } else {
-                style.bottom = 'initial';
+            switch (verticalDisplay) {
+                case "default":
+                    if (rect.bottom > innerHeight) {
+                        style.bottom = 0;
+                        style.top = 'initial';
+                    } else {
+                        style.bottom = 'initial';
+                    }
+                    break;
+                case "top":
+                    style.bottom = 0;
+                    style.top = 'initial';
+                    break;
+                case "bottom":
+                    style.bottom = 'initial';
+                    break;
             }
+
             setPosition(style);
         }
     }, []);
