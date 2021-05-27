@@ -34,6 +34,11 @@
     font-size: 12px;
   }
 
+  &__submenu-arrow-left {
+    margin-left: auto;
+    font-size: 12px;
+  }
+
   &__separator {
     width: 100%;
     height: 1px;
@@ -50,7 +55,7 @@
     cursor: pointer;
     position: relative;
 
-    &:focus{
+    &:focus {
       outline: 0;
     }
 
@@ -69,6 +74,7 @@
       cursor: default;
       opacity: 0.5;
     }
+
     &__content {
       padding: 6px 12px;
       display: flex;

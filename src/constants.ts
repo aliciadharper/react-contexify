@@ -5,6 +5,7 @@ export const enum STYLE {
   menu = 'react-contexify',
   submenu = 'react-contexify react-contexify__submenu',
   submenuArrow = 'react-contexify__submenu-arrow',
+  submenuArrowLeft = 'react-contexify__submenu-arrow-left',
   submenuOpen = 'react-contexify__submenu--is-open',
   separator = 'react-contexify__separator',
   item = 'react-contexify__item',

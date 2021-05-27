@@ -26,7 +26,7 @@ export interface SubMenuProps
      * Render a custom arrow
      */
     arrow?: ReactNode;
-
+    defaultArrowDirection: ReactNode;
     /**
      * Disable the `Submenu`. If a function is used, a boolean must be returned
      */
@@ -50,6 +50,7 @@ export const Submenu: React.FC<SubMenuProps> = ({
                                                     children,
                                                     horizontalDisplay = "default",
                                                     verticalDisplay = "default",
+                                                    defaultArrowDirection = "right",
                                                     disabled = false,
                                                     hidden = false,
                                                     label,
@@ -156,10 +157,15 @@ export const Submenu: React.FC<SubMenuProps> = ({
                 aria-haspopup
                 aria-disabled={isDisabled}
             >
-                <div className={STYLE.itemContent} onClick={handleClick}>
-                    {label}
-                    <span className={STYLE.submenuArrow}>{arrow}</span>
-                </div>
+                {defaultArrowDirection === "right " ?
+                    <div className={STYLE.itemContent} onClick={handleClick}>
+                        {label}
+                        <span className={STYLE.submenuArrow}>{arrow}</span>
+                    </div> :
+                    <div className={STYLE.itemContent} onClick={handleClick}>
+                        <span className={STYLE.submenuArrowLeft}>◀</span>
+                        {label}
+                    </div>}
                 <div className={STYLE.submenu} ref={nodeRef} style={submenuStyle}>
                     {cloneItems(children, {
                         propsFromTrigger,
