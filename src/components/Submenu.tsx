@@ -50,7 +50,7 @@ export const Submenu: React.FC<SubMenuProps> = ({
                                                     children,
                                                     horizontalDisplay = "default",
                                                     verticalDisplay = "default",
-                                                    defaultArrowDirection = "right",
+                                                    defaultArrowDirection = "left",
                                                     disabled = false,
                                                     hidden = false,
                                                     label,
@@ -157,13 +157,13 @@ export const Submenu: React.FC<SubMenuProps> = ({
                 aria-haspopup
                 aria-disabled={isDisabled}
             >
-                {defaultArrowDirection === "right " ?
+                {defaultArrowDirection === "right" ?
                     <div className={STYLE.itemContent} onClick={handleClick}>
                         {label}
                         <span className={STYLE.submenuArrow}>{arrow}</span>
                     </div> :
                     <div className={STYLE.itemContent} onClick={handleClick}>
-                        <span className={STYLE.submenuArrowLeft}>◀</span>
+                        <span className={STYLE.submenuArrowLeft}>◀ </span>
                         {label}
                     </div>}
                 <div className={STYLE.submenu} ref={nodeRef} style={submenuStyle}>
